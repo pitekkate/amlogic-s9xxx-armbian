@@ -13,6 +13,9 @@ jobs:
       BOARD: rk322x
       RELEASE: jammy
       BRANCH: current
+      BUILD_MINIMAL: no
+      BUILD_DESKTOP: no
+      DISABLE_INTERACTIVE_DIALOGS: yes  # 🔑 Penting! Untuk nonaktifkan dialog
 
     steps:
       - name: Checkout armbian/build
@@ -38,8 +41,11 @@ jobs:
 
       - name: Build Armbian image for rk322x
         working-directory: armbian-build
+        env:
+          DISABLE_INTERACTIVE_DIALOGS: ${{ env.DISABLE_INTERACTIVE_DIALOGS }}
         run: |
-          ./compile.sh BOARD=${{ env.BOARD }} RELEASE=${{ env.RELEASE }} BRANCH=${{ env.BRANCH }} BUILD_MINIMAL=no BUILD_DESKTOP=no
+          ./compile.sh BOARD=${{ env.BOARD }} RELEASE=${{ env.RELEASE }} BRANCH=${{ env.BRANCH }} \
+            BUILD_MINIMAL=${{ env.BUILD_MINIMAL }} BUILD_DESKTOP=${{ env.BUILD_DESKTOP }}
 
       - name: Find image file
         id: find_image
