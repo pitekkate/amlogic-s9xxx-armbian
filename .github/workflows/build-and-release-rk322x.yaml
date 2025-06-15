@@ -1,10 +1,9 @@
 name: Build and Release rk322x Armbian Image
 
 on:
-  push:
-    tags:
-      - 'rk322x-*' # Trigger when pushing a tag like "rk322x-jammy-current"
-
+  repository_dispatch:
+  workflow_dispatch:
+  
 jobs:
   build-and-release:
     name: Build & Release rk322x Image
