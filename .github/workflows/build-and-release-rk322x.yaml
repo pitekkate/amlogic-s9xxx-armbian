@@ -42,7 +42,7 @@ jobs:
       - name: Build Armbian image for rk322x
         working-directory: armbian-build
         env:
-          DISABLE_INTERACTIVE_DIALOGS: ${{ env.DISABLE_INTERACTIVE_DIALOGS }}
+          DISABLE_INTERACTIVE_DIALOGS: yes
         run: |
           ./compile.sh BOARD=${{ env.BOARD }} RELEASE=${{ env.RELEASE }} BRANCH=${{ env.BRANCH }} \
             BUILD_MINIMAL=${{ env.BUILD_MINIMAL }} BUILD_DESKTOP=${{ env.BUILD_DESKTOP }}
