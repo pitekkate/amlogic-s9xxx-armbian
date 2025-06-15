@@ -1,7 +1,6 @@
 name: Build and Release rk322x Armbian Image
 
 on:
-  repository_dispatch:
   workflow_dispatch:
   
 jobs:
