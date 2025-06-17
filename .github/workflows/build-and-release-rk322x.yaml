@@ -45,7 +45,7 @@ jobs:
           DISABLE_INTERACTIVE_DIALOGS: yes
         run: |
           ./compile.sh BOARD=${{ env.BOARD }} RELEASE=${{ env.RELEASE }} BRANCH=${{ env.BRANCH }} \
-            BUILD_MINIMAL=${{ env.BUILD_MINIMAL }} BUILD_DESKTOP=${{ env.BUILD_DESKTOP }}
+            BUILD_MINIMAL=${{ env.BUILD_MINIMAL }} BUILD_OPT=nointeractive BUILD_DESKTOP=${{ env.BUILD_DESKTOP }}
 
       - name: Find image file
         id: find_image
