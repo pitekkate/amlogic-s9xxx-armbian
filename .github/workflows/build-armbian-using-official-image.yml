@@ -16,7 +16,7 @@ on:
       armbian_board:
         description: "Select device board."
         required: false
-        default: "all"
+        default: "rk322x-box"
         type: choice
         options:
           - all
@@ -193,7 +193,7 @@ on:
       auto_kernel:
         description: "Auto use the latest kernel."
         required: false
-        default: true
+        default: false
         type: boolean
       kernel_repo:
         description: "Set the kernel repository."
@@ -205,9 +205,10 @@ on:
       kernel_usage:
         description: "Set the tags of the stable kernel."
         required: false
-        default: "stable"
+        default: "kernel-rk322x"
         type: choice
         options:
+          - kernel-rk322x
           - stable
           - flippy
           - dev
@@ -231,7 +232,7 @@ on:
       builder_name:
         description: "Set Armbian builder signature."
         required: false
-        default: "ophub"
+        default: "kangris"
         type: choice
         options:
           - ophub
@@ -340,6 +341,7 @@ jobs:
           auto_kernel: ${{ inputs.auto_kernel }}
           kernel_repo: ${{ inputs.kernel_repo }}
           kernel_usage: ${{ inputs.kernel_usage }}
+          kernel_tags: "6.1.y"
           armbian_fstype: ${{ inputs.armbian_fstype }}
           builder_name: ${{ inputs.builder_name }}
 
